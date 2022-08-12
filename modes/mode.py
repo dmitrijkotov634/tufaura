@@ -4,9 +4,6 @@ from asuslighting.tufaura import ASUSTUFAura
 
 
 class Mode(metaclass=ABCMeta):
-    def str(self):
-        return self.__class__.__name__
-
     @abstractmethod
     def enable(self, aura: ASUSTUFAura):
         pass
