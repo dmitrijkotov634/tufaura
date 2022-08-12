@@ -18,12 +18,12 @@ toaster = ToastNotifier()
 def main():
     aura = ASUSTUFAura()
 
-    controller = Controller(aura, config.modes, config.modes[0])
+    controller = Controller(aura, config.modes, config.modes[0][1])
 
     def change(func):
         def wrapped():
             toaster.show_toast("ASUS Lighting",
-                               func().get_name(),
+                               func()[0],
                                duration=1,
                                threaded=True)
 

@@ -4,7 +4,7 @@ from asuslighting.tufaura import ASUSTUFAura
 
 
 class Mode(metaclass=ABCMeta):
-    def get_name(self):
+    def str(self):
         return self.__class__.__name__
 
     @abstractmethod

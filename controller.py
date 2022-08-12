@@ -5,7 +5,7 @@ from asuslighting.tufaura import ASUSTUFAura
 
 
 class Controller:
-    def __init__(self, aura: ASUSTUFAura, modes: tuple[Mode, ...], current_mode: Mode):
+    def __init__(self, aura: ASUSTUFAura, modes: dict, current_mode: Mode):
         self.aura = aura
 
         self.modes = deque(modes)
@@ -23,10 +23,10 @@ class Controller:
 
     def next(self):
         self.modes.rotate(1)
-        self.change_mode(self.modes[0])
-        return self.current_mode
+        self.change_mode(self.modes[0][1])
+        return self.modes[0]
 
     def prev(self):
         self.modes.rotate(-1)
-        self.change_mode(self.modes[0])
-        return self.current_mode
+        self.change_mode(self.modes[0][1])
+        return self.modes[0]
