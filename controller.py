@@ -1,5 +1,7 @@
 from collections import deque
 
+from keyboard import KeyboardEvent
+
 from asuslighting.modes.mode import Mode
 from asuslighting.tufaura import ASUSTUFAura
 
@@ -30,3 +32,6 @@ class Controller:
         self.modes.rotate(-1)
         self.change_mode(self.modes[0][1])
         return self.modes[0]
+
+    def on_key_event(self, event: KeyboardEvent):
+        self.current_mode.on_key_event(event)
