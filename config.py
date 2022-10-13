@@ -1,7 +1,7 @@
 from asuslighting.modes.custom import transition
 from asuslighting.modes.default import DefaultMode
 from asuslighting.modes.dynamic import dynamic_dominant_mode, dynamic_mouse_position_mode
-from asuslighting.modes.ripple import Ripple
+from asuslighting.modes.ripple import RippleSwitch
 from asuslighting.modes.transition import Transition
 from asuslighting.tufaura import TUFSpeed, TUFMode
 
@@ -54,7 +54,7 @@ modes = [
     ("Dynamic (dominant)", dynamic_dominant_mode()),
     ("Dynamic (mouse position)", dynamic_mouse_position_mode()),
 
-    ("Ripple", Ripple(
+    ("Ripple", RippleSwitch(
         key_up=lambda: DefaultMode(
             TUFMode.STATIC,
             (90, 90, 0)
