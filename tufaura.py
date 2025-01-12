@@ -18,8 +18,8 @@ class TUFSpeed(Enum):
 
 class ASUSTUFAura:
     def __init__(self, dll_path: str = "ACPIWMI.dll"):
-        self.aswmi = cdll.LoadLibrary(dll_path)
-        self.aswmi.AsWMI_Open()
+        self.dll = cdll.LoadLibrary(dll_path)
+        self.dll.AsWMI_Open()
 
     def set_color(self,
                   red: int = 255,
@@ -27,7 +27,7 @@ class ASUSTUFAura:
                   blue: int = 255,
                   mode: TUFMode = TUFMode.STATIC,
                   speed: TUFSpeed = TUFSpeed.LOW):
-        print("r =", red, "g =", green, "b =", blue, "mode =", mode.name, "speed =", speed.name)
+        # print("r =", red, "g =", green, "b =", blue, "mode =", mode.name, "speed =", speed.name)
         high = ((mode.value | ((red | (green << 8)) << 8)) << 8) | 0xB3
         low = blue | (speed.value << 8)
-        self.aswmi.AsWMI_NB_DeviceControl_2arg(0x100056, high, low)
+        self.dll.AsWMI_NB_DeviceControl_2arg(0x100056, high, low)

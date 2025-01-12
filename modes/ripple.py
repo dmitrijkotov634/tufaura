@@ -1,4 +1,4 @@
-import typing
+from typing import Callable
 
 import keyboard
 
@@ -15,7 +15,7 @@ class RippleSwitch(Mode):
     last_state: bool
     keyboard_state: set
 
-    def __init__(self, key_down: typing.Callable, key_up: typing.Callable):
+    def __init__(self, key_down: Callable, key_up: Callable):
         self.factory_key_down = key_down
         self.factory_key_up = key_up
 

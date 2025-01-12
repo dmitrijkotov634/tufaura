@@ -7,7 +7,7 @@ from asuslighting.tufaura import ASUSTUFAura
 
 
 class Controller:
-    def __init__(self, aura: ASUSTUFAura, modes: dict, current_mode: Mode):
+    def __init__(self, aura: ASUSTUFAura, modes: list[tuple[str, Mode]], current_mode: Mode):
         self.aura = aura
 
         self.modes = deque(modes)
@@ -35,3 +35,6 @@ class Controller:
 
     def on_key_event(self, event: KeyboardEvent):
         self.current_mode.on_key_event(event)
+
+    def stop(self):
+        self.current_mode.disable(self.aura)

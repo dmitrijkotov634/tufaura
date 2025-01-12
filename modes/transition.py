@@ -1,14 +1,15 @@
 import time
 from threading import Thread
-from typing import Tuple, Iterator
+from typing import Iterator
 
 from asuslighting import ASUSTUFAura
+from asuslighting.modes.default import RGBColor
 from asuslighting.modes.mode import Mode
 from asuslighting.modes.utils import color_transition
 
 
 class Worker(Thread):
-    def __init__(self, aura: ASUSTUFAura, iterator: Iterator[Tuple[int, int, int]], steps: int):
+    def __init__(self, aura: ASUSTUFAura, iterator: Iterator[RGBColor], steps: int):
         super().__init__()
 
         self.aura = aura
@@ -33,7 +34,7 @@ class Worker(Thread):
 class Transition(Mode):
     lighting: Worker
 
-    def __init__(self, iterator: Iterator[Tuple[int, int, int]], steps: int = 15):
+    def __init__(self, iterator: Iterator[RGBColor], steps: int = 15):
         self.iterator = iterator
         self.steps = steps
 
